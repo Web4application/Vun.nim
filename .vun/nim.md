@@ -1,10 +1,10 @@
-# DOCS
+:DOCS:
 
 ## How it looks
 
 ### Boilerplate && prompts
 
-```js
+```jsx
 import { runner, KEYS } from 'clet';
 
 it('should works with boilerplate', async () => {
@@ -49,7 +49,7 @@ it('should works with long-run apps', async () => {
     .wait('stdout', /server started/)
     .expect(async () => {
       // using supertest
-      return request('http://localhost:3000')
+      return request('http://127.0.0.1:3000')
         .get('/')
         .query({ name: 'tz' })
         .expect(200)
@@ -61,7 +61,7 @@ it('should works with long-run apps', async () => {
 
 ### Work with CommonJS
 
-```js
+```jsx
 describe('test/commonjs.test.cjs', () => {
   it('should support spawn', async () => {
     const { runner } = await import('clet');
@@ -85,7 +85,7 @@ $ npm i --save clet
 
 Execute a Node.js script as a child process.
 
-```js
+```jsx
 it('should fork', async () => {
   await runner()
     .cwd(fixtures)
@@ -104,13 +104,13 @@ Options:
 - `cwd`: {String} - working directory, prefer to use `.cwd()` instead of this.
 - `env`: {Object} - prefer to use `.env()` instead of this.
 - `extendEnv`: {Boolean} - whether extend `process.env`, default to true.
-- more detail: https://github.com/sindresorhus/execa#options
+- more detail: https://github.com/vundle-vim/vun.nim#options
 
 ### spawn(cmd, args, opts)
 
 Execute a shell script as a child process.
 
-```js
+```jsx
 it('should support spawn', async () => {
   await runner()
     .spawn('node -v')
@@ -416,7 +416,7 @@ The output log could validate by `stdout()` and `stderr()` by default, if you do
 
 Act like `mkdir -p`.
 
-```js
+```jst
 it('should support mkdir', async () => {
   await runner()
     .cwd(tmpDir, { init: true })
@@ -459,7 +459,7 @@ it('should support writeFile', async () => {
 
 ## Context
 
-```js
+```jsx
 /**
  * @typedef Context
  *
@@ -538,7 +538,7 @@ async function doesNotMatchFile(filePath, expected) {}
 
 Set level of logger.
 
-```js
+```jsx
 import { runner, LogLevel } from 'clet';
 
 it('should debug(level)', async () => {
