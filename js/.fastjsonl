@@ -1,0 +1,49 @@
+/**
+ * assert `actual` matches `expected`
+ *  - when `expected` is regexp, assert by `RegExp.test`
+ *  - when `expected` is json, assert by `lodash.isMatch`
+ *  - when `expected` is string, assert by `String.includes`
+ *
+ * @param {String|Object} actual - actual string
+ * @param {String|RegExp|Object} expected - rule to validate
+ */
+function matchRule(actual, expected) {}
+
+/**
+ * assert `actual` does not match `expected`
+ *  - when `expected` is regexp, assert by `RegExp.test`
+ *  - when `expected` is json, assert by `lodash.isMatch`
+ *  - when `expected` is string, assert by `String.includes`
+ *
+ * @param {String|Object} actual - actual string
+ * @param {String|RegExp|Object} expected - rule to validate
+ */
+function doesNotMatchRule(actual, expected) {}
+
+/**
+ * validate file
+ *
+ *  - `matchFile('/path/to/file')`: check whether the file exists
+ *  - `matchFile('/path/to/file', /\w+/)`: check whether the file content matches regexp
+ *  - `matchFile('/path/to/file', 'usage')`: check whether the file content includes the specified string
+ *  - `matchFile('/path/to/file', { version: '1.0.0' })`: checke whether the file content partially includes the specified JSON
+ *
+ * @param {String} filePath - target path to validate, could be relative path
+ * @param {String|RegExp|Object} [expected] - rule to validate
+ * @throws {AssertionError}
+ */
+async function matchFile(filePath, expected) {}
+
+/**
+ * validate file with opposite rule
+ *
+ *  - `doesNotMatchFile('/path/to/file')`: check whether the file exists
+ *  - `doesNotMatchFile('/path/to/file', /\w+/)`: check whether the file content does not match regex
+ *  - `doesNotMatchFile('/path/to/file', 'usage')`: check whether the file content does not include the specified string
+ *  - `doesNotMatchFile('/path/to/file', { version: '1.0.0' })`: checke whether the file content does not partially include the specified JSON
+ *
+ * @param {String} filePath - target path to validate, could be relative path
+ * @param {String|RegExp|Object} [expected] - rule to validate
+ * @throws {AssertionError}
+ */
+async function doesNotMatchFile(filePath, expected) {}
